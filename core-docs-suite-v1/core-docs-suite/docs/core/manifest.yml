@@ -1,0 +1,14 @@
+version: 1
+audience: "ai"
+owners: ["zandy2test"]
+workflows: ["startup-checklist", "verify-ui"]
+rules: ["verify-first", "tool-failures", "context-asker", "capability-gap"]
+evidence:
+  assertions: ["by-role", "by-text", "by-label"]
+  plus_one_of: ["trace", "logs", "dom-text"]
+capabilities:
+  required: []
+  optional: ["web-scrape", "ui-introspection"]
+maintenance:
+  cadence: "monthly"
+  quality_gates: ["markdownlint", "linkcheck"]

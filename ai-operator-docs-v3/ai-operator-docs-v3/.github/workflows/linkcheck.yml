@@ -1,0 +1,15 @@
+name: linkcheck
+on:
+  schedule:
+    - cron: '0 8 * * 1'
+  workflow_dispatch:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: lycheeverse/lychee-action@v2
+        with:
+          args: --no-progress --exclude-mail --max-concurrency 4 --timeout 20 --verbose .
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
