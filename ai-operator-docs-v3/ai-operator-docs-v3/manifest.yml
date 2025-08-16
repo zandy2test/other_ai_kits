@@ -1,0 +1,45 @@
+version: 1.0
+audience: "ai-first"
+owner: "solo-founder"
+updated: "2024-12-16"
+
+workflows:
+  location: "/ai-core-template/workflows/"
+  core:
+    - startup-checklist.md
+    - verify-ui.md
+    - apply-startup.md
+  shipping:
+    - ship-it.md
+    - unstuck.md
+    
+rules:
+  location: ".clinerules/"
+  active:
+    - verify-first
+    - tool-failures
+    - context-asker
+    - capability-gap
+  global_path: "~/Documents/Cline/Rules/"
+
+context:
+  location: "/ai-context/"
+  files:
+    - operator-profile.md
+    - ai-brief.md
+    - risks.md
+    - evidence.md
+
+capabilities:
+  required:
+    - name: "playwright-mcp"
+      fallback: "Manual DOM inspection"
+    - name: "firecrawl-mcp"  
+      fallback: "curl + grep"
+
+verification:
+  ui:
+    method: "accessibility-first"
+    selectors: ["getByRole", "getByText", "getByLabel"]
+  evidence:
+    minimum: "assertions + one artifact"
